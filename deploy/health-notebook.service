@@ -1,0 +1,15 @@
+[Unit]
+Description=Health notebook Claude Remote Control
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+WorkingDirectory=%h/health-notebook
+ExecStart=%h/.local/bin/health-notebook-remote
+Environment=HEALTH_NOTEBOOK_PERMISSION_MODE=acceptEdits
+UMask=0077
+Restart=always
+RestartSec=60
+
+[Install]
+WantedBy=default.target
