@@ -5,6 +5,9 @@ always-on computer and saves meals, nutrition goals, body weight, test results,
 and appointment notes as plain-text files. The Claude mobile app connects through
 Remote Control. No custom phone app or database is needed.
 
+<img src="docs/images/phone-meal-log.jpg" width="320"
+     alt="Claude app on an iPhone: a photo of a canteen lunch and the menu board, with Claude's reply logging each component with estimated weights">
+
 **Not medical advice.** This is a record-keeping tool, not a medical device.
 Claude's nutrition figures, photo estimates, and summaries can be wrong; check
 anything important, and make treatment and diet decisions with your clinician.
