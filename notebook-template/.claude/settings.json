@@ -11,6 +11,9 @@
       "Bash(date:*)",
       "Bash(python3 ~/health-notebook-kit/extras/librelinkup/latest_raw_status.py:*)",
       "Bash(bash ~/health-notebook-kit/extras/scripts/build-dashboard.sh:*)"
+    ],
+    "additionalDirectories": [
+      "~/health-notebook-kit"
     ]
   }
 }

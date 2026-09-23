@@ -83,7 +83,7 @@ once the folder is trusted. Exit
 Claude, then start the first Remote Control server:
 
 ```sh
-~/.local/bin/claude remote-control --name health-notebook --spawn=same-dir --capacity 1 --permission-mode acceptEdits
+~/.local/bin/claude remote-control --name health-notebook --spawn=same-dir --capacity 1 --permission-mode auto
 ```
 
 Accept any first-run Remote Control confirmation. Open the displayed session URL
@@ -95,11 +95,13 @@ Send: “Read AGENTS.md and PROFILE.md and tell me which preferences still need
 setting.” Confirm a reply. This proves the actual mobile connection works.
 Stop the foreground server with Ctrl-C before starting the service.
 
-`acceptEdits` allows routine file edits. The notebook's `.claude/settings.json`
-also pre-approves the Git commands used to save entries and the optional glucose
-and dashboard helpers, so everyday logging does not ask for approval on the
-phone. Anything else still asks. Fully unattended operation is an explicit
-option described in OPERATIONS.md, not a requirement for setup.
+The service uses auto mode: a classifier approves routine actions and blocks
+risky ones, so everyday logging does not ask for approval on the phone. The
+notebook's `.claude/settings.json` also pre-approves the Git commands used to
+save entries and lets Claude read the kit. If Claude starts in Manual mode or
+reports that auto mode is unavailable (it needs a supported plan and model, and
+an organization can turn it off), use `acceptEdits` as described in
+OPERATIONS.md.
 
 ## 4. Keep it running
 

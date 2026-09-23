@@ -2,9 +2,9 @@
 set -euo pipefail
 cd "$HOME/health-notebook"
 claude_bin="$HOME/.local/bin/claude"
-mode="${HEALTH_NOTEBOOK_PERMISSION_MODE:-acceptEdits}"
+mode="${HEALTH_NOTEBOOK_PERMISSION_MODE:-auto}"
 case "$mode" in
-  default|acceptEdits|bypassPermissions) ;;
+  default|acceptEdits|auto|bypassPermissions) ;;
   *) echo "Unsupported HEALTH_NOTEBOOK_PERMISSION_MODE" >&2; exit 2 ;;
 esac
 # A new directory has nothing to resume. Fall back to a single-capacity server.

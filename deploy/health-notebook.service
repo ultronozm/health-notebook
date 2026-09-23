@@ -6,7 +6,7 @@ StartLimitIntervalSec=0
 Type=simple
 WorkingDirectory=%h/health-notebook
 ExecStart=%h/.local/bin/health-notebook-remote
-Environment=HEALTH_NOTEBOOK_PERMISSION_MODE=acceptEdits
+Environment=HEALTH_NOTEBOOK_PERMISSION_MODE=auto
 UMask=0077
 Restart=always
 RestartSec=60

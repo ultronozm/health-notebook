@@ -38,24 +38,31 @@ backup and explicitly authorize deletion through the provider.
 
 ## Permissions
 
-The default `acceptEdits` mode permits file edits. The notebook's
-`.claude/settings.json` pre-approves Git status/diff/log/add/commit/push, `date`,
-and the optional glucose and dashboard helpers; other shell commands ask for
-approval on the phone. Add rules there for commands you approve repeatedly (see
-[permission rules](https://code.claude.com/docs/en/permissions)).
-`default` asks more often. If the owner explicitly wants commands to proceed
-without approval, use a dedicated account with no sudo and
-no unrelated private files, and explain that Claude can execute commands with
-that account's access. Then create an override with `systemctl --user edit
-health-notebook.service`:
+The service starts Claude in [auto mode](https://code.claude.com/docs/en/permission-modes),
+where a classifier reviews each action instead of asking you. The phone app
+cannot switch a Remote Control session into auto mode, so the service sets it at
+launch. When auto mode is unavailable, Claude Code falls back to Manual mode,
+which asks before every edit; switch to `acceptEdits` instead, which permits file
+edits and asks before other shell commands.
+
+The notebook's `.claude/settings.json` pre-approves Git status/diff/log/add/commit/push,
+`date`, and the optional glucose and dashboard helpers, and gives read access to
+`~/health-notebook-kit`, so logging works without prompts in either mode. Add
+[permission rules](https://code.claude.com/docs/en/permissions) there for
+commands you approve repeatedly.
+
+To change mode, create an override with `systemctl --user edit health-notebook.service`:
 
 ```ini
 [Service]
-Environment=HEALTH_NOTEBOOK_PERMISSION_MODE=bypassPermissions
+Environment=HEALTH_NOTEBOOK_PERMISSION_MODE=acceptEdits
 ```
 
-Run `systemctl --user daemon-reload` and restart the service. Set the value back
-to `acceptEdits` to restore the default.
+Run `systemctl --user daemon-reload` and restart the service. Supported values
+are `auto`, `acceptEdits`, `default`, and `bypassPermissions`. Use
+`bypassPermissions`, which skips all checks, only on a dedicated account with no
+sudo and no unrelated private files: Claude can then run any command with that
+account's access.
 
 ## Backups
 

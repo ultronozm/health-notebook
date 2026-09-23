@@ -21,6 +21,7 @@ class SetupTests(unittest.TestCase):
             self.assertTrue((target / 'AGENTS.md').exists())
             settings = json.loads((target / '.claude/settings.json').read_text())
             self.assertIn('Bash(git commit:*)', settings['permissions']['allow'])
+            self.assertIn('~/health-notebook-kit', settings['permissions']['additionalDirectories'])
             self.assertEqual(subprocess.check_output(['git', '-C', str(target), 'remote']), b'')
             self.assertNotIn('Example food', (target / 'meal-log.org').read_text())
             sentinel = target / 'private-record'
@@ -59,7 +60,7 @@ class SetupTests(unittest.TestCase):
             return result.returncode, calls
 
     def test_resume_and_fallback(self):
-        code, calls = self.run_launcher(0, 'acceptEdits')
+        code, calls = self.run_launcher(0, 'auto')
         self.assertEqual(code, 0)
         self.assertEqual(len(calls), 1)
         code, calls = self.run_launcher(1, 'default')
