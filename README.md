@@ -15,8 +15,7 @@ Clone or download this repository, open it in your local coding agent, and say:
 > Read AGENTS.md and docs/SETUP.md and set up my health notebook. Use an existing
 > always-on computer if I have one; otherwise help me choose and provision a
 > Hetzner server. Handle the installation and verification, and guide me through
-> account logins when needed. Keep my health records private and outside this
-> public setup repository.
+> account logins when needed.
 
 Any agent with terminal/SSH access can follow the runbook. The service it installs
 uses **Claude Code**, so you still need a Claude account eligible for Remote
@@ -36,33 +35,48 @@ agent should establish the chosen plan and your authorization before creating it
 - A Linux user service that starts after reboot and resumes the session.
 - Optional private Git backup, with no public Git remote in the initial notebook.
 
-Try: “Record lunch at 12:30: 150 g cooked rice and 120 g tofu. Mark the nutrition
-as estimated.” Or: “Put this question on my appointment list.” Org files are
-readable text; Emacs is optional. Review quantities and calculations as you go.
+## Everyday uses
+
+- **Photograph a food label once.** “Remember this yoghurt.” Claude saves the
+  product and its nutrition values in `foods.org`, your personal food database.
+  Next time, just say “200 g of my usual yoghurt” and it uses the saved values.
+- **Weigh ingredients at home.** “Lunch: 120 g tofu, 150 g cooked rice, 10 g olive
+  oil.” Claude calculates the meal and adds it to the day's totals.
+- **Send a photo when eating out.** “Here's my cafeteria lunch.” Claude estimates
+  the portions and nutrition, marks them as estimates, and can adjust the entry
+  if you mention a sauce, a second helping, or something you left on the plate.
+- **Remember a batch you cooked.** Give the ingredient weights and finished batch
+  weight once; later, “250 g of yesterday's lentil stew” is enough to log a portion.
+- **Review the day.** “How much protein and carbohydrate have I logged today?”
+  Get totals from the record, with estimates and incomplete meals identified.
+- **Keep context for appointments.** Send a glucose screenshot or a quick note
+  about a walk after lunch, then ask for a summary of recorded observations and
+  questions to bring to your next appointment.
+
+The food database and logs are ordinary text files, so remembered products carry
+across conversations. Org files are readable without special software; Emacs is
+optional. You can change the files and instructions to suit your own habits.
 
 Start with [the setup guide](docs/SETUP.md). For a new machine, use
 [the Hetzner recipe](docs/HETZNER.md). See [operations](docs/OPERATIONS.md) for
 restarts, backups, and troubleshooting, and [a fictional example](examples/meal-log.org).
 
-Automatic CGM imports and a dashboard are future additions. This version records
-glucose observations you supply; it does not monitor a sensor or provide alerts.
-It organizes records for you and your clinicians, and does not prescribe treatment.
+This setup uses the glucose readings and screenshots you send it. It does not
+include an automatic CGM connection or a dashboard.
 
-## Where the information goes
+## Storage and backup
 
-The template is public; your initialized notebook is separate and private by
-default. Conversation content is processed by Anthropic. The computer provider
-stores the files, and a private Git host stores them if you enable backup. Do not
-put health records, chat transcripts, credentials, or real screenshots in this
-repository or its issues. Local Git history is useful undo, but is not an off-machine
-backup. See the operations guide before relying on the notebook for your only copy.
+The setup creates `~/health-notebook` for your records, separate from the setup
+files. Conversations are processed by Anthropic; files live on your computer or
+server. You can back them up to another computer or a private Git repository.
+See [backup instructions](docs/OPERATIONS.md#backups).
 
 ## Development
 
 Run `python3 -m unittest discover -s tests -v` and `for script in scripts/*.sh; do bash -n "$script"; done`.
 The reusable notebook instructions live in `notebook-template/AGENTS.md`;
 `notebook-template/CLAUDE.md` points Claude to them. Instructions are copied at
-initialization so an upstream update cannot silently change a live notebook.
+initialization and can be adapted to your own workflow.
 See [instruction updates](docs/OPERATIONS.md#updating-instructions).
 
 License: MIT; see [LICENSE](LICENSE).

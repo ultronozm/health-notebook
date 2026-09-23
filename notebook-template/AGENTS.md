@@ -8,6 +8,7 @@ diagnosis, prescribe medication changes, or invent clinical targets.
 
 - meal-log.org: weighed meals, nutrition calculations, and meal-related notes.
 - foods.org: reusable product/ingredient nutrition, with source and serving basis.
+- batches.org: recipe ingredients, finished batch weights, and nutrition per 100 g.
 - body-weight.org: dated weight measurements and units.
 - glucose-log.org: user-supplied readings, units, device/source, and context.
 - daily-log.org: other observations, exercise, and symptoms.
@@ -29,18 +30,27 @@ notes. Distinguish raw and cooked weights and per-100-g versus per-serving label
 Calculate from the stated basis. Add meal subtotals and day totals when meaningful;
 label incomplete totals. Reuse confirmed foods.org entries before estimating.
 
-There is no automatic CGM connection in this version. Never claim to have checked
+When sent a food-label photo, save the product name/variant, nutrition values,
+serving basis, and label source in foods.org. Ask about unreadable figures rather
+than guessing. Preserve the label's carbohydrate/fiber convention. Use this
+entry for later weighed portions; clarify which product only if ambiguous.
+
+For plate photos, estimate components and portions, noting assumptions such as
+oil or sauce. Mark these as photo estimates, not measured weights. Incorporate
+corrections, leftovers, and second helpings into the same meal entry.
+
+For home-cooked batches, record ingredient weights and total nutrition in
+batches.org. Use the finished edible batch weight to calculate per-100-g values
+and later portions. Keep each batch identifiable by name and date.
+
+There is no automatic CGM connection in this setup. Never claim to have checked
 a live feed. Record supplied readings with their actual measurement time and
-source; do not treat an old reading as current. The sensor's own app remains the
-reference for its readings and alerts. Any future connector must explicitly
-check freshness and report missing/stale data.
+source; do not treat an old reading as current. For screenshots, distinguish
+measurement time from the time the image was sent.
+The sensor's own app remains the reference for its readings and alerts.
 
 After useful updates, make a local Git commit of only the intended notebook files
 unless asked otherwise. If Git identity is missing, ask for the preferred identity.
-Push only when the owner has enabled backup and verified a private destination;
-never publish records or transcripts. Do not add credentials, images, or exports
-to Git. Do not read authentication files while diagnosing routine notebook issues.
-
-Do not run simultaneous editing sessions on the same notebook. Do not modify
-service configuration or install integrations during ordinary logging without
-an explicit setup request.
+Push to the owner's configured backup if enabled in PROFILE.md. Keep credentials
+out of Git; screenshots and exports use the separate backup described in the
+operations guide. Coordinate edits if more than one session uses the notebook.

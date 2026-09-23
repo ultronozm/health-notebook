@@ -8,10 +8,8 @@ systemctl --user restart health-notebook.service
 journalctl --user -u health-notebook.service -n 40 --no-pager
 ```
 
-Read logs privately: they may include session links and conversation-related
-information. If login expires, stop the service, run Claude interactively in
-`~/health-notebook`, complete `/login`, and restart the service. Do not copy
-Claude credential files between people or put them in Git.
+If login expires, stop the service, run Claude interactively in
+`~/health-notebook`, complete `/login`, and restart the service.
 
 If the service is active but the phone cannot connect, inspect the journal,
 verify the account and outbound network, and try a foreground Remote Control
@@ -43,8 +41,7 @@ Environment=HEALTH_NOTEBOOK_PERMISSION_MODE=bypassPermissions
 ```
 
 Run `systemctl --user daemon-reload` and restart the service. Set the value back
-to `acceptEdits` to restore the default. Do not make bypass mode an implicit fix
-for authentication or connection errors.
+to `acceptEdits` to restore the default.
 
 ## Backups
 
@@ -63,12 +60,10 @@ you deliberately want mirror semantics. Secure the destination disk and test
 restoring to a separate directory. Notebook files are the durable record; Claude
 conversation history is not included in this backup.
 
-For optional GitHub backup, create a **new private repository**, not a public
-fork. Add a dedicated write deploy key scoped to it. Verify its visibility with
-the owner before the first push, set the notebook's remote to that private repo,
-and set `Private backup enabled: yes` in PROFILE.md. Never use the setup kit's
-origin. Git stores earlier records even after deletion; keep the whole history
-private. Keep large images and exports in a separate private backup.
+For optional GitHub backup, create a private repository and add a write deploy key
+for the server. Set the notebook's remote to that repository and set
+`Private backup enabled: yes` in PROFILE.md. Keep images and exports in a separate
+file backup, since the notebook's .gitignore excludes them.
 
 ## Updating instructions
 
@@ -79,9 +74,9 @@ initializer on an existing notebook. Service installation refuses differing
 existing files so you can review them first.
 
 The canonical reusable rules are `notebook-template/AGENTS.md`; CLAUDE.md points
-to them. Copies are intentional: a public upstream commit should not silently
-change how an unattended agent handles private data. Live symlinks are possible
-for an owner-maintained checkout, but are not configured here. For a pre-existing
+to them. Edit your copies freely. If you prefer to share instructions across
+notebooks, you can symlink them to a checkout you maintain; the default setup
+simply copies them. For a pre-existing
 notebook, compare its current instructions and retain its integration-specific
 rules (such as CGM freshness checks) before adopting any shared text.
 

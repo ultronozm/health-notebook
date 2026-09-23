@@ -35,7 +35,7 @@ not establish the user systemd session correctly.
 
 Copy this kit to `~/health-notebook-kit` on the target using Git or rsync. Before
 publication, a local checkout can be transferred as follows (replace `HOST` with
-the verified SSH alias/IP; do not paste placeholders literally):
+your SSH alias/IP):
 
 ```sh
 rsync -av --exclude=.git --exclude=__pycache__ ./ notebook@HOST:health-notebook-kit/
@@ -106,8 +106,8 @@ systemctl --user is-active health-notebook.service
 journalctl --user -u health-notebook.service -n 40 --no-pager
 ```
 
-Inspect the journal locally for a session link or errors; don't paste the entire
-journal into public issues. The launcher first tries to resume; if that fails,
+Check the journal for a session link or errors. The launcher first tries to resume;
+if that fails,
 it starts a named server with capacity one. Authentication failures can cause
 repeated restarts, so check for a working session rather than just an active unit.
 The unit retries once a minute and user lingering permits startup after reboot.
@@ -126,10 +126,8 @@ The unit retries once a minute and user lingering permits startup after reboot.
   pending if it cannot be performed now.
 - Confirm `loginctl show-user notebook -p Linger` reports `yes` and
   `systemctl --user is-enabled health-notebook.service` reports `enabled`.
-- Confirm `git remote -v` is empty, or the owner has verified the backup remote
-  is private. Choose an off-machine backup before retaining important records.
+- Set up the chosen backup, if requested (see the operations guide).
 
 Give the owner the SSH alias, private notebook location, service name, how to
 reconnect, and [operations guide](OPERATIONS.md). Record versions tested and any
-unverified steps in private deployment notes outside this public kit. Do not say
-“complete” if mobile access or required login is still unverified.
+unverified steps in deployment notes, including any pending phone or login check.

@@ -1,9 +1,7 @@
 # Provision a dedicated Hetzner computer
 
-This is an agent-executable recipe, not an automatic purchase. Use an existing
-machine when suitable. The account owner creates a Hetzner Cloud account/project
-and authorizes the selected server's recurring cost. Never reuse the author's
-infrastructure or account details; this kit contains none.
+Use this recipe when you need a new always-on machine. The account owner creates
+a Hetzner Cloud account/project and chooses a server plan with the setup agent.
 
 ## Choose and authenticate
 

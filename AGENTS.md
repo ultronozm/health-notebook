@@ -1,31 +1,22 @@
-# Working with this setup kit
+# Working with health-notebook
 
-Read README.md, then docs/SETUP.md. This is public source code, not a personal
-health notebook. Never record the user's health information here.
+Read README.md and docs/SETUP.md. For setup requests, carry out the runbook with
+available terminal and SSH tools, reusing suitable existing infrastructure.
+Ask for missing choices together and guide the user through account logins.
+Use authorization already given; confirm the plan and cost before purchasing a
+server if those have not been agreed.
 
-For a setup request, carry out the runbook with available terminal/SSH tools.
-Inspect first; reuse suitable existing infrastructure. Ask only for missing
-choices, credentials the user must enter themselves, and authorizations not
-already provided. Do not ask again for an approved deployment. Before creating
-billable infrastructure, establish the project, location, plan, current price,
-and spending authorization. Do not create infrastructure merely to test this kit.
+The initializer creates a separate ~/health-notebook with its own Git history.
+This is the default layout, which users can adapt. Preserve existing files and
+services when setting up on a machine already in use. Keep credentials out of
+Git and tool output. Use the documented non-root account and permission settings,
+or the user's chosen configuration.
 
-Never print tokens, private keys, Claude authentication files, or health logs.
-Use interactive/provider login flows. Keep deployment notes outside this checkout.
-Do not alter unrelated services, overwrite an existing notebook, disable SSH host
-key checking, or copy credentials from another user's setup. A dedicated non-root
-account runs Claude; its default configuration must not bypass permissions.
+Verify the phone connection as well as service startup using docs/SETUP.md.
+Report what worked and any steps still needing login or a phone check. If waiting
+for the user, complete independent setup work and give the precise next step.
 
-The public kit and private notebook must be separate directories. Run the
-initializer on the target computer. It creates a new Git repo with no remote;
-only add a verified private backup destination on user request. Never attach
-health records to this kit's public origin.
-
-Complete the verification checklist in docs/SETUP.md. Report exactly which steps
-were verified and which need a human phone/login check. An active systemd service
-alone does not prove Remote Control works. If blocked on login, prepare the rest
-and give the precise next command rather than declaring setup complete.
-
-For development, preserve existing edits, use fictional fixtures, and run the
-checks in README.md. Do not deploy changes to an existing health notebook unless
-that is part of the user's request.
+For development, preserve existing edits and run the checks in README.md when
+changing the scripts. Examples should be fictional. Keep the documentation
+practical and concise, describing the workflow rather than imposing rules on
+how people may use their own copy.
