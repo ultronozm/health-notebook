@@ -122,8 +122,6 @@ validate with `sshd -t`, reload `ssh`, and re-test in a new terminal while keepi
 the original admin session open. Do not change unrelated settings on shared hosts.
 
 Return to [SETUP.md, step 2](SETUP.md#2-prepare-the-computer), using the
-`health-notebook` SSH alias. When transferring the kit, use
-`rsync -av --exclude=.git --exclude=__pycache__ ./ health-notebook:health-notebook-kit/`.
-Complete login, service, phone, and reboot checks. No DNS name or public website
-is needed. Consider provider backups or private Git backup as described in the
-operations guide; never enable paid extras without the owner's authorization.
+`health-notebook` SSH alias. Complete login, service, phone, and reboot checks.
+No DNS name or public website is needed. Consider provider backups or private
+Git backup as described in the operations guide; never enable paid extras without the owner's authorization.

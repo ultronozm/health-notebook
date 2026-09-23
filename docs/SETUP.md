@@ -33,13 +33,12 @@ owner's SSH **public** key as described in HETZNER.md. Do not give the Claude
 account passwordless sudo. Log in directly over SSH as that user; `sudo su` may
 not establish the user systemd session correctly.
 
-Copy this kit to `~/health-notebook-kit` on the target using Git or rsync. Before
-publication, a local checkout can be transferred as follows (replace `HOST` with
-your SSH alias/IP):
+Log in as the notebook user (replace `HOST` with your SSH alias/IP) and clone
+this kit to `~/health-notebook-kit`:
 
 ```sh
-rsync -av --exclude=.git --exclude=__pycache__ ./ notebook@HOST:health-notebook-kit/
 ssh notebook@HOST
+git clone https://github.com/ultronozm/health-notebook.git ~/health-notebook-kit
 ```
 
 Subsequent commands run **on the target, as notebook**, unless labeled otherwise.

@@ -81,9 +81,9 @@ file backup, since the notebook's .gitignore excludes them.
 
 ## Updating instructions
 
-The public kit and private notebook have independent histories. Pull updates in
-`~/health-notebook-kit`, review them, then selectively copy instruction changes
-into the private notebook. Preserve PROFILE.md and all records. Do not rerun the
+The public kit and private notebook have independent histories. Run `git pull`
+in `~/health-notebook-kit`, review the changes, then selectively copy
+instruction changes into the private notebook. Preserve PROFILE.md and all records. Do not rerun the
 initializer on an existing notebook. Service installation refuses differing
 existing files so you can review them first.
 
