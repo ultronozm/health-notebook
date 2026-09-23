@@ -1,4 +1,5 @@
 import importlib.util
+import json
 import os
 from pathlib import Path
 import subprocess
@@ -18,6 +19,8 @@ class SetupTests(unittest.TestCase):
             initializer.initialize(target)
             self.assertEqual(target.stat().st_mode & 0o777, 0o700)
             self.assertTrue((target / 'AGENTS.md').exists())
+            settings = json.loads((target / '.claude/settings.json').read_text())
+            self.assertIn('Bash(git commit:*)', settings['permissions']['allow'])
             self.assertEqual(subprocess.check_output(['git', '-C', str(target), 'remote']), b'')
             self.assertNotIn('Example food', (target / 'meal-log.org').read_text())
             sentinel = target / 'private-record'

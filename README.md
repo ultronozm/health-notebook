@@ -5,8 +5,18 @@ always-on computer and saves meals, nutrition goals, body weight, test results,
 and appointment notes as plain-text files. The Claude mobile app connects through
 Remote Control. No custom phone app or database is needed.
 
-**Draft:** the setup helpers have local automated checks; a clean-server and
-phone walkthrough is still required before calling this a tested deployment.
+**Not medical advice.** This is a record-keeping tool, not a medical device.
+Claude's nutrition figures, photo estimates, and summaries can be wrong; check
+anything important, and make treatment and diet decisions with your clinician.
+Your messages and any photos you send are processed by Anthropic under your
+Claude account's terms.
+
+**Tested** on Ubuntu 24.04 with Claude Code 2.1.251 (September 2026): notebook
+initialization, logging and commits without approval prompts, logging a meal
+photo from the iPhone app, the dashboard build, and the service's start and
+resume. That test used an already-logged-in account on an existing server;
+first-time login for a new account and a reboot of a new dedicated server have
+not yet been run end to end.
 
 ## Ask your coding agent to set it up
 
@@ -76,11 +86,14 @@ restarts, backups, and troubleshooting, and [a fictional example](examples/meal-
   See [dashboard setup](docs/DASHBOARD.md), or run `make demo` to try fictional data.
 - **Glucose imports:** for people using a compatible Libre sensor and LibreLinkUp,
   fetch cloud readings on demand or every five minutes, and show glucose traces
-  alongside meals. See [LibreLinkUp setup](docs/GLUCOSE.md). You can also log
+  alongside meals. See [LibreLinkUp setup](docs/GLUCOSE.md). This uses an
+  unofficial client for Abbott's cloud service, not an Abbott product; it may
+  stop working without notice, and you are responsible for complying with
+  LibreLinkUp's terms. It is not a substitute for the sensor app's alarms. You can also log
   readings or screenshots manually.
 
-Both are included in this repo and can be enabled independently. The notebook
-works without either; no particular diagnosis or tracking goal is assumed.
+Both live under `extras/` and can be enabled independently. The notebook
+works without either.
 
 ## Storage and backup
 

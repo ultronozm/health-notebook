@@ -23,7 +23,7 @@ On the notebook computer, as the notebook user:
 
 ```sh
 cd ~/health-notebook-kit
-HEALTH_NOTEBOOK_TZ=Europe/London bash scripts/build-dashboard.sh
+HEALTH_NOTEBOOK_TZ=Europe/London bash extras/scripts/build-dashboard.sh
 ```
 
 Use the owner's IANA timezone from PROFILE.md instead of the example. The default
@@ -62,7 +62,7 @@ As the notebook user, with the kit at `~/health-notebook-kit`:
 
 ```sh
 mkdir -p ~/.config/systemd/user
-cp ~/health-notebook-kit/deploy/health-notebook-site.* ~/.config/systemd/user/
+cp ~/health-notebook-kit/extras/deploy/health-notebook-site.* ~/.config/systemd/user/
 systemctl --user edit health-notebook-site.service
 ```
 

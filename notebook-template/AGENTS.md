@@ -19,13 +19,17 @@ diagnosis, prescribe medication changes, or invent clinical targets.
 ## Recording
 
 Check `git status` before edits; preserve unrelated and unsaved user changes.
-Keep entries chronological and use Org timestamps, e.g. `<2026-01-15 Thu 12:30>`.
+Keep entries chronological and date them with Org timestamps, e.g. `<2026-01-15 Thu>`.
 Use the person's timezone. Ask if a date, time, or glucose unit is ambiguous;
 do not silently treat server UTC as local time. Keep reported facts, estimates,
 and interpretation distinguishable. Never invent missing results.
 
-Use one nutrition table per day, under a dated heading, with columns
+Use one nutrition table per day, under a dated heading such as
+`* <2026-01-15 Thu>`, with columns
 `Time`, `Item`, `Wt.`, `Carb`, `Cal`, `Fat`, `Prot.`, `Sat.`, `Notes`.
+Write `Time` as plain `HH:MM`; the heading carries the date. Name items exactly
+as their foods.org `Food`, or `Food, Product` when the food has several products
+(a batch portion as `<name> batch YYYY-MM-DD`), so records stay linked.
 Label aggregate rows `Subtotal`, `Day so far`, or `Day total` (qualifiers can
 follow those words). Add meals to that day's table so totals cover the whole day.
 Weights and macros are grams, energy kcal; state the basis above the table.
@@ -59,7 +63,7 @@ ranges, making clear when the day's record is incomplete. Goals are optional;
 do not fill in targets on the owner's behalf.
 
 If automatic glucose import is configured in PROFILE.md, check the archive with
-`python3 ~/health-notebook-kit/tools/librelinkup/latest_raw_status.py` before
+`python3 ~/health-notebook-kit/extras/librelinkup/latest_raw_status.py` before
 using its readings. Check measurement time as well as pull time; a successful
 pull can contain old readings. Otherwise use only readings supplied by the owner.
 Record supplied readings with their actual measurement time and

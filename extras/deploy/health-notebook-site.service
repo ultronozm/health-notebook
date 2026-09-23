@@ -4,6 +4,6 @@ Description=Build health notebook dashboard
 [Service]
 Type=oneshot
 WorkingDirectory=%h/health-notebook-kit
-ExecStart=/bin/bash %h/health-notebook-kit/scripts/build-dashboard.sh
+ExecStart=/bin/bash %h/health-notebook-kit/extras/scripts/build-dashboard.sh
 Environment=HEALTH_NOTEBOOK_TZ=UTC
 UMask=0077

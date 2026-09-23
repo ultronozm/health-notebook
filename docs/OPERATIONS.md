@@ -11,6 +11,16 @@ journalctl --user -u health-notebook.service -n 40 --no-pager
 If login expires, stop the service, run Claude interactively in
 `~/health-notebook`, complete `/login`, and restart the service.
 
+If Claude asks approval for every `git commit`, the folder has not been trusted:
+stop the service, run `claude` once in `~/health-notebook`, choose **Yes, I trust
+this folder**, exit, and restart the service.
+
+Claude may mention connectors such as Gmail, Google Calendar, or Google Drive
+needing authorization. These belong to the Claude account, not the notebook, and
+the notebook does not need them. Remove unused ones at
+[claude.ai/customize/connectors](https://claude.ai/customize/connectors) to
+silence the message and keep other services out of the notebook's sessions.
+
 If the service is active but the phone cannot connect, inspect the journal,
 verify the account and outbound network, and try a foreground Remote Control
 session with the service stopped. Use the emitted session link. A hosted cloud
@@ -28,9 +38,13 @@ backup and explicitly authorize deletion through the provider.
 
 ## Permissions
 
-The default `acceptEdits` mode permits file edits and can still require approvals
-for shell commands. `default` asks more often. If the owner explicitly wants
-commands to proceed without approval, use a dedicated account with no sudo and
+The default `acceptEdits` mode permits file edits. The notebook's
+`.claude/settings.json` pre-approves Git status/diff/log/add/commit/push, `date`,
+and the optional glucose and dashboard helpers; other shell commands ask for
+approval on the phone. Add rules there for commands you approve repeatedly (see
+[permission rules](https://code.claude.com/docs/en/permissions)).
+`default` asks more often. If the owner explicitly wants commands to proceed
+without approval, use a dedicated account with no sudo and
 no unrelated private files, and explain that Claude can execute commands with
 that account's access. Then create an override with `systemctl --user edit
 health-notebook.service`:

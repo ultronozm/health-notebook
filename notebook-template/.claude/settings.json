@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(date:*)",
+      "Bash(python3 ~/health-notebook-kit/extras/librelinkup/latest_raw_status.py:*)",
+      "Bash(bash ~/health-notebook-kit/extras/scripts/build-dashboard.sh:*)"
+    ]
+  }
+}

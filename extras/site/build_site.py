@@ -24,7 +24,7 @@ from zoneinfo import ZoneInfo
 try:
     from .org_tables import OrgTable, parse_org_tables
     from .meal_rows import classify_meal_row
-except ImportError:  # Direct execution: python3 tools/site/build_site.py
+except ImportError:  # Direct execution: python3 extras/site/build_site.py
     from org_tables import OrgTable, parse_org_tables
     from meal_rows import classify_meal_row
 

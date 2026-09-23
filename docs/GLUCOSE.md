@@ -15,10 +15,10 @@ the notebook user:
 ```sh
 cd ~/health-notebook-kit
 python3 -m venv .venv
-.venv/bin/pip install -r tools/librelinkup/requirements.txt
+.venv/bin/pip install -r extras/librelinkup/requirements.txt
 mkdir -p ~/.config/health-notebook
 chmod 700 ~/.config/health-notebook
-cp tools/librelinkup/.env.example ~/.config/health-notebook/librelinkup.env
+cp extras/librelinkup/.env.example ~/.config/health-notebook/librelinkup.env
 chmod 600 ~/.config/health-notebook/librelinkup.env
 ```
 
@@ -30,8 +30,8 @@ The parser accepts plain `KEY=value` lines; this file is not a shell script.
 List connections, then fetch the latest reading:
 
 ```sh
-.venv/bin/python tools/librelinkup/fetch_glucose.py patients
-.venv/bin/python tools/librelinkup/fetch_glucose.py latest
+.venv/bin/python extras/librelinkup/fetch_glucose.py patients
+.venv/bin/python extras/librelinkup/fetch_glucose.py latest
 ```
 
 If the account has multiple connections, add `--patient PATIENT_ID` (from the
@@ -44,8 +44,8 @@ and are recent compared with the phone's sensor app.
 On Linux:
 
 ```sh
-bash scripts/pull-glucose.sh
-python3 tools/librelinkup/latest_raw_status.py
+bash extras/scripts/pull-glucose.sh
+python3 extras/librelinkup/latest_raw_status.py
 ```
 
 The wrapper uses `flock` (from Ubuntu's util-linux) to prevent overlapping pulls.
@@ -65,7 +65,7 @@ alerts; this archive is for logging and review.
 
 ```sh
 mkdir -p ~/.config/systemd/user
-cp ~/health-notebook-kit/deploy/health-notebook-glucose.* ~/.config/systemd/user/
+cp ~/health-notebook-kit/extras/deploy/health-notebook-glucose.* ~/.config/systemd/user/
 ```
 
 For multiple connections, use `systemctl --user edit health-notebook-glucose.service`
@@ -74,7 +74,7 @@ to select the patient in the service command:
 ```ini
 [Service]
 ExecStart=
-ExecStart=/bin/bash %h/health-notebook-kit/scripts/pull-glucose.sh --patient PATIENT_ID
+ExecStart=/bin/bash %h/health-notebook-kit/extras/scripts/pull-glucose.sh --patient PATIENT_ID
 ```
 
 Then start and schedule the puller:

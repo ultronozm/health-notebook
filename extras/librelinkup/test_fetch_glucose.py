@@ -3,7 +3,7 @@ from __future__ import annotations
 import copy
 import unittest
 
-from tools.librelinkup.fetch_glucose import normalize_alarm_thresholds
+from extras.librelinkup.fetch_glucose import normalize_alarm_thresholds
 
 
 class AlarmThresholdCompatibilityTests(unittest.TestCase):
@@ -39,7 +39,7 @@ class SessionTests(unittest.TestCase):
         import tempfile
         from pathlib import Path
         from unittest.mock import patch
-        from tools.librelinkup import fetch_glucose as fetch
+        from extras.librelinkup import fetch_glucose as fetch
         with tempfile.TemporaryDirectory() as tmp:
             state = Path(tmp) / 'session.json'
             fetch.write_state(state, {'token': 'fictional-token', 'account_id_hash': 'fictional-hash'})
@@ -55,7 +55,7 @@ class SessionTests(unittest.TestCase):
         import time
         from pathlib import Path
         from unittest.mock import patch
-        from tools.librelinkup import fetch_glucose as fetch
+        from extras.librelinkup import fetch_glucose as fetch
         with tempfile.TemporaryDirectory() as tmp:
             state = Path(tmp) / 'session.json'
             fetch.write_state(state, {'login_blocked_until': time.time() + 3600})
@@ -67,7 +67,7 @@ class SessionTests(unittest.TestCase):
 
     def test_multiple_connections_require_selection(self):
         from unittest.mock import Mock
-        from tools.librelinkup.fetch_glucose import pick_patient
+        from extras.librelinkup.fetch_glucose import pick_patient
         client = Mock()
         client.get_patients.return_value = [Mock(), Mock()]
         with self.assertRaises(SystemExit):

@@ -77,7 +77,10 @@ cd ~/health-notebook
 ~/.local/bin/claude
 ```
 
-Follow login (or `/login`) and accept workspace trust for this directory. Exit
+Follow login (or `/login`). When asked whether you trust this folder, choose
+**Yes, I trust this folder** (the highlighted default is to exit); the prompt
+lists the commands pre-approved in `.claude/settings.json`, which only take effect
+once the folder is trusted. Exit
 Claude, then start the first Remote Control server:
 
 ```sh
@@ -93,8 +96,10 @@ Send: “Read AGENTS.md and PROFILE.md and tell me which preferences still need
 setting.” Confirm a reply. This proves the actual mobile connection works.
 Stop the foreground server with Ctrl-C before starting the service.
 
-`acceptEdits` allows routine file edits; shell operations may still ask permission
-on the phone. This is the default. Fully unattended operation is an explicit
+`acceptEdits` allows routine file edits. The notebook's `.claude/settings.json`
+also pre-approves the Git commands used to save entries and the optional glucose
+and dashboard helpers, so everyday logging does not ask for approval on the
+phone. Anything else still asks. Fully unattended operation is an explicit
 option described in OPERATIONS.md, not a requirement for setup.
 
 ## 4. Keep it running
