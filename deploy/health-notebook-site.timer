@@ -1,0 +1,11 @@
+[Unit]
+Description=Refresh health notebook site every five minutes
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=5min
+Persistent=true
+Unit=health-notebook-site.service
+
+[Install]
+WantedBy=timers.target

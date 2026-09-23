@@ -5,3 +5,8 @@ __pycache__/
 .env.*
 !.env.example
 /.local/
+/.venv/
+/exports/
+/data/
+/examples/notebook/exports/
+/examples/notebook/data/

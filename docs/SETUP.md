@@ -4,7 +4,7 @@
 
 Inspect available tools and existing SSH configuration without printing secrets.
 Ask for missing essentials together: existing always-on machine or new Hetzner
-server, timezone, glucose/weight units, and desired private backup. Reuse known
+server, timezone, preferred units for anything they want to track, and backup. Reuse known
 answers. If provisioning, follow [HETZNER.md](HETZNER.md) first.
 
 This recipe uses Ubuntu 24.04, a dedicated non-root login called `notebook`, Git,
@@ -131,3 +131,11 @@ The unit retries once a minute and user lingering permits startup after reboot.
 Give the owner the SSH alias, private notebook location, service name, how to
 reconnect, and [operations guide](OPERATIONS.md). Record versions tested and any
 unverified steps in deployment notes, including any pending phone or login check.
+
+## Optional tools
+
+Once phone logging works, ask whether the owner wants the [dashboard](DASHBOARD.md)
+and/or [LibreLinkUp imports](GLUCOSE.md). Each guide includes installation,
+automatic refresh, and verification. Enable only the parts they choose. Weight,
+test results, and nutrition targets can also be tracked directly in chat without
+either tool. The notebook templates include the table formats used by the site.

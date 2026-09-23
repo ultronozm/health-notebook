@@ -1,0 +1,11 @@
+#+TITLE: Nutrition targets
+
+Optional targets supplied by you or your clinician. Leave unset until chosen.
+Metric: Cal, Carb, Fat, Protein, or Sat. Direction: range, minimum, maximum,
+or track. Use Lower/Upper for a range, Target for a minimum/maximum.
+Units: kcal for Cal, g for the other metrics. Notes can record source/date.
+
+| Metric | Lower | Target | Upper | Direction | Units | Notes |
+|--------+-------+--------+-------+-----------+-------+-------|
+| Protein | | 90 | | minimum | g | Fictional demonstration, not advice |
+| Cal | 1800 | | 2200 | range | kcal | Fictional demonstration, not advice |

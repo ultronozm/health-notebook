@@ -1,8 +1,8 @@
 # health-notebook
 
 A personal health notebook you talk to from your phone. Claude Code runs on an
-always-on computer and saves meals, glucose observations, weight, and questions
-for appointments as plain-text files. The Claude mobile app connects through
+always-on computer and saves meals, nutrition goals, body weight, test results,
+and appointment notes as plain-text files. The Claude mobile app connects through
 Remote Control. No custom phone app or database is needed.
 
 **Draft:** the setup helpers have local automated checks; a clean-server and
@@ -37,6 +37,8 @@ agent should establish the chosen plan and your authorization before creating it
 
 ## Everyday uses
 
+Use whichever parts are helpful to you:
+
 - **Photograph a food label once.** “Remember this yoghurt.” Claude saves the
   product and its nutrition values in `foods.org`, your personal food database.
   Next time, just say “200 g of my usual yoghurt” and it uses the saved values.
@@ -49,9 +51,14 @@ agent should establish the chosen plan and your authorization before creating it
   weight once; later, “250 g of yesterday's lentil stew” is enough to log a portion.
 - **Review the day.** “How much protein and carbohydrate have I logged today?”
   Get totals from the record, with estimates and incomplete meals identified.
-- **Keep context for appointments.** Send a glucose screenshot or a quick note
-  about a walk after lunch, then ask for a summary of recorded observations and
-  questions to bring to your next appointment.
+- **Track body weight.** “72 kg this morning.” Keep a dated record and ask how
+  your weight has changed over the past few weeks.
+- **Keep test results together.** Send a photo or document from the lab; Claude
+  records the results, units, and reference ranges for comparison over time.
+- **Follow your nutrition targets.** Tell it your daily goals, then ask “How much
+  protein do I have left today?” or “How am I doing against my calorie range?”
+- **Keep context for appointments.** Record a question, symptom, or exercise note,
+  then ask for a summary to bring to your next appointment.
 
 The food database and logs are ordinary text files, so remembered products carry
 across conversations. Org files are readable without special software; Emacs is
@@ -61,8 +68,19 @@ Start with [the setup guide](docs/SETUP.md). For a new machine, use
 [the Hetzner recipe](docs/HETZNER.md). See [operations](docs/OPERATIONS.md) for
 restarts, backups, and troubleshooting, and [a fictional example](examples/meal-log.org).
 
-This setup uses the glucose readings and screenshots you send it. It does not
-include an automatic CGM connection or a dashboard.
+## Optional tools
+
+- **A personal website:** browse meal totals, progress against daily targets,
+  weight trends, test results, saved foods, batches, and appointment notes in one
+  dashboard. It builds from the same notebook files and can refresh automatically.
+  See [dashboard setup](docs/DASHBOARD.md), or run `make demo` to try fictional data.
+- **Glucose imports:** for people using a compatible Libre sensor and LibreLinkUp,
+  fetch cloud readings on demand or every five minutes, and show glucose traces
+  alongside meals. See [LibreLinkUp setup](docs/GLUCOSE.md). You can also log
+  readings or screenshots manually.
+
+Both are included in this repo and can be enabled independently. The notebook
+works without either; no particular diagnosis or tracking goal is assumed.
 
 ## Storage and backup
 
@@ -73,7 +91,8 @@ See [backup instructions](docs/OPERATIONS.md#backups).
 
 ## Development
 
-Run `python3 -m unittest discover -s tests -v` and `for script in scripts/*.sh; do bash -n "$script"; done`.
+Run `make test`. After installing the optional glucose dependencies, run
+`make test-glucose` as well.
 The reusable notebook instructions live in `notebook-template/AGENTS.md`;
 `notebook-template/CLAUDE.md` points Claude to them. Instructions are copied at
 initialization and can be adapted to your own workflow.

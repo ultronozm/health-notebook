@@ -1,0 +1,16 @@
+#+TITLE: Fictional home-cooked batch
+
+* Batch 2026-01-14 — Example stew
+** Ingredients
+| Ingredient | Wt. | Carb | Cal | Fat | Prot. | Sat. | Source |
+|------------+-----+------+-----+-----+-------+------+--------|
+| Example mix | 500 | 100 | 800 | 20 | 40 | 4 | Fictional |
+** Cooked batch
+| Field | Value | Notes |
+|-------+-------+-------|
+| Cooked stored weight | 800 | g, weighed after cooking |
+| Carb per 100 g net | 12.5 | g; legacy field name, retain label convention |
+| Cal per 100 g | 100 | kcal |
+| Fat per 100 g | 2.5 | g |
+| Prot per 100 g | 5 | g |
+| Sat per 100 g | 0.5 | g |

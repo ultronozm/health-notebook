@@ -1,0 +1,8 @@
+[Unit]
+Description=Archive LibreLinkUp glucose data
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/health-notebook-kit
+ExecStart=/bin/bash %h/health-notebook-kit/scripts/pull-glucose.sh
+UMask=0077

@@ -7,7 +7,9 @@ unset; do not copy somebody else's clinical history or nutrition targets.
 - Timezone (IANA name, e.g. Europe/London): unset
 - Glucose units (mmol/L or mg/dL): unset
 - Weight units: unset
-- Nutrition targets, if supplied by the owner/clinician: unset
+- Nutrition targets: see nutrition-targets.org (optional)
+- Automatic glucose import: not configured
+- Dashboard timezone: set HEALTH_NOTEBOOK_TZ when enabling the dashboard
 - Private backup enabled: no
 
 This file is private. Add relevant context only when the owner wants it retained.

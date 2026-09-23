@@ -4,6 +4,7 @@
 Values per 100 g; retain the label's carbohydrate convention in Notes.
 | Food | Product | Carb | Cal | Fat | Prot. | Sat. | Fiber | Source | Notes |
 |------+---------+------+-----+-----+-------+------+-------+--------+-------|
+| Example yoghurt | Plain | 4 | 60 | 1 | 9 | 0.5 | 0 | Fictional label | |
 
 * Package Shortcuts
 | Food | Basis | Wt. | Carb | Cal | Fat | Prot. | Sat. | Notes |

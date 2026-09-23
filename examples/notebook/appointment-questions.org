@@ -1,0 +1,4 @@
+#+TITLE: Appointment questions
+
+* Questions
+- What follow-up should I record before our next visit?

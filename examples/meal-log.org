@@ -5,9 +5,9 @@
 Weights/macros in g; energy in kcal. Fictional label: per 100 g, 20 g
 carbohydrate, 150 kcal, 5 g fat, 6 g protein, 1 g saturated fat.
 
-| Food           | Wt. | Carb | Cal | Fat | Prot. | Sat. |
+| Item           | Wt. | Carb | Cal | Fat | Prot. | Sat. |
 |----------------+-----+------+-----+-----+-------+------|
 | Example food   | 150 |   30 | 225 | 7.5 |     9 |  1.5 |
-| Lunch subtotal |     |   30 | 225 | 7.5 |     9 |  1.5 |
+| Subtotal (lunch) |     |   30 | 225 | 7.5 |     9 |  1.5 |
 
 Only lunch recorded; this is not a complete day total.
